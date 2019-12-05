@@ -27,15 +27,15 @@ describe('jsonWrite function', () => {
   });
 });
 
-describe('jsonRead function', () => {
-  it('can read an object from a file', () => {
-    return readJson('./color.json')
-      .then((contents) => {
-        expect(contents).toEqual({
-          favoriteColor: 'blue',
-          randomColor: 'magenta'
-        });
-      });
-  });
-});
+// describe('jsonRead function', () => {
+//   it('can read an object from a file', () => {
+//     return readJson('./color.json')
+//       .then((contents) => {
+//         expect(contents).toEqual({
+//           favoriteColor: 'blue',
+//           randomColor: 'magenta'
+//         });
+//       });
+//   });
+// });
 

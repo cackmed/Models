@@ -19,7 +19,7 @@ describe('validator module', () => {
       expect(isNumber('hi')).toBeFalsy();
       expect(isNumber([])).toBeFalsy();
       expect(isNumber({})).toBeFalsy();
-      expect(isNumber(() => { })).toBeFalsy();
+      expect(isNumber(() => {})).toBeFalsy();
       expect(isNumber(true)).toBeFalsy();
     });
 
@@ -28,7 +28,7 @@ describe('validator module', () => {
       expect(isString(3)).toBeFalsy();
       expect(isString([])).toBeFalsy();
       expect(isString({})).toBeFalsy();
-      expect(isString(() => { })).toBeFalsy();
+      expect(isString(() => {})).toBeFalsy();
       expect(isString(true)).toBeFalsy();
     });
 
@@ -39,7 +39,7 @@ describe('validator module', () => {
       expect(isBoolean('hi')).toBeFalsy();
       expect(isBoolean([])).toBeFalsy();
       expect(isBoolean({})).toBeFalsy();
-      expect(isBoolean(() => { })).toBeFalsy();
+      expect(isBoolean(() => {})).toBeFalsy();
     });
 
     it('properly tells if a value is an object', () => {
@@ -48,7 +48,7 @@ describe('validator module', () => {
       expect(isObject('hi')).toBeFalsy();
       expect(isObject([])).toBeFalsy();
       expect(isObject(false)).toBeFalsy();
-      expect(isObject(() => { })).toBeFalsy();
+      expect(isObject(() => {})).toBeFalsy();
     });
 
     it('properly tells if a value is an array', () => {
@@ -57,11 +57,11 @@ describe('validator module', () => {
       expect(isArray(3)).toBeFalsy();
       expect(isArray('hi')).toBeFalsy();
       expect(isArray(false)).toBeFalsy();
-      expect(isArray(() => { })).toBeFalsy();
+      expect(isArray(() => {})).toBeFalsy();
     });
 
     it('properly tells if a value is a function', () => {
-      expect(isFunction(() => { })).toBeTruthy();
+      expect(isFunction(() => {})).toBeTruthy();
       expect(isFunction([])).toBeFalsy();
       expect(isFunction({})).toBeFalsy();
       expect(isFunction(3)).toBeFalsy();
@@ -93,7 +93,7 @@ describe('validator module', () => {
 
     it('throws if value is not castable to string', () => {
       expect(() => castToString({})).toThrowErrorMatchingSnapshot();
-      expect(() => castToString(() => { })).toThrowErrorMatchingSnapshot();
+      expect(() => castToString(() => {})).toThrowErrorMatchingSnapshot();
     });
 
     it('can cast values to a boolean', () => {
@@ -105,7 +105,7 @@ describe('validator module', () => {
 
     it('throws if value is not castable to boolean', () => {
       expect(() => castToBoolean({})).toThrowErrorMatchingSnapshot();
-      expect(() => castToBoolean(() => { })).toThrowErrorMatchingSnapshot();
+      expect(() => castToBoolean(() => {})).toThrowErrorMatchingSnapshot();
     });
 
     it('can cast values to an array', () => {

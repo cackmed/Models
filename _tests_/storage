@@ -1,9 +1,0 @@
-// const readJson = require('../lib/read-json');
-// describe('jsonRead function', () => {
-//   it('can read an object from a file', () => {
-//     return readJson('./Colors.md')
-//       .then(() => {
-//         expect(fs.readFile).toHaveBeenLastCalledWith('./Colors.md', 'utf8');
-//       });
-//   });
-// });

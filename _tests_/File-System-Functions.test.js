@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 
 const { 
-  readJson,
+  // readJson,
   writeJson
 } = require('../lib/data-base-functions');
 

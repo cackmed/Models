@@ -1,0 +1,1 @@
+{"favoriteColor":"blue","randomColor":"magenta"}

@@ -1,13 +1,16 @@
 const fs = require('fs').promises;
 
 const { 
-  // readJson,
+  readJson,
   writeJson
 } = require('../lib/data-base-functions');
 
 jest.mock('fs', () => ({
   promises: {
-    readFile: jest.fn(() => Promise.resolve('My File Contents')),
+    readFile: jest.fn(() => Promise.resolve({
+      favoriteColor: 'blue',
+      randomColor: 'magenta'
+    })),
     writeFile: jest.fn(() => Promise.resolve())
   }
 }));
@@ -27,15 +30,15 @@ describe('jsonWrite function', () => {
   });
 });
 
-// describe('jsonRead function', () => {
-//   it('can read an object from a file', () => {
-//     return readJson('./color.json')
-//       .then((contents) => {
-//         expect(contents).toEqual({
-//           favoriteColor: 'blue',
-//           randomColor: 'magenta'
-//         });
-//       });
-//   });
-// });
+describe('jsonRead function', () => {
+  it('can read an object from a file', () => {
+    return readJson('./color.json')
+      .then((contents) => {
+        expect(contents).toEqual({
+          favoriteColor: 'blue',
+          randomColor: 'magenta'
+        });
+      });
+  });
+});
 

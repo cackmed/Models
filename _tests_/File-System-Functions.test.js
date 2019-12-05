@@ -1,31 +1,40 @@
 const fs = require('fs').promises;
-const writeJson = require('../lib/write-json');
-const readJson = require('../lib/read-json');
+
+const { 
+  readJson,
+  writeJson
+} = require('../lib/data-base-functions');
+
 jest.mock('fs', () => ({
   promises: {
     readFile: jest.fn(() => Promise.resolve('My File Contents')),
     writeFile: jest.fn(() => Promise.resolve())
   }
 }));
+
 describe('jsonWrite function', () => {
   it('can write a object into a file at dest', () => {
-    return writeJson('../Colors.md', {
+    return writeJson('./color.json', {
       favoriteColor: 'blue',
       randomColor: 'magenta'
     })
       .then(() => {
-        expect(fs.writeFile).toHaveBeenLastCalledWith('./Colors.md', JSON.stringify({
+        expect(fs.writeFile).toHaveBeenLastCalledWith('./color.json', JSON.stringify({
           favoriteColor: 'blue',
           randomColor: 'magenta'
         }));
       });
   });
 });
+
 describe('jsonRead function', () => {
   it('can read an object from a file', () => {
-    return readJson('./Colors.md')
-      .then(() => {
-        expect(fs.readFile).toHaveBeenLastCalledWith('./Colors.md');
+    return readJson('./color.json')
+      .then((contents) => {
+        expect(contents).toEqual({
+          favoriteColor: 'blue',
+          randomColor: 'magenta'
+        });
       });
   });
 });

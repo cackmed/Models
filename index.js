@@ -1,6 +1,5 @@
 require('dotenv').config();
-require('./lib/utils/connect')();
-const mongoose = require('mongoose');
+require('./lib/utils/connect');
 const chance = require('chance').Chance();
 
 

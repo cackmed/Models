@@ -30,7 +30,7 @@ describe('Model', () => {
       });
   });
 
-  it('creates a new dog', () => {
+  it.skip('creates a new dog', () => {
     const schema = new Schema({
       name: {
         type: String,

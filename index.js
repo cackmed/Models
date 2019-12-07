@@ -1,8 +1,6 @@
 require('dotenv').config();
-require('./lib/utils/connect');
+require('./lib/utils/connect')();
 const chance = require('chance').Chance();
-
-
 const Dog = require('./lib/models/Dog');
 
 Dog.create({

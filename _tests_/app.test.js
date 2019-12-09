@@ -64,7 +64,7 @@ describe('testing curd routes', () => {
       .get(`/dogs/${dog._id}`)
       .then(res => {
         expect(res.body).toEqual({ 
-          _id: expect.toString(),
+          _id: dog._id.toString(),
           name: dog.name,
           age: dog.age,
           weight: dog.weight,

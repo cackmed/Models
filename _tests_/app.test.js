@@ -22,21 +22,21 @@ describe('testing curd routes', () => {
   it('creates a dog on post', () => {
     return request(app)
       .post('/dogs')
-      .send({ name: 'Leo', age: 3, weight: '75 ib' })
+      .send({ name: 'Leo', age: 3, weight: '75 ibs' })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           name: 'Leo',
           age: 3,
-          weight: '75 ib'
+          weight: '75 ibs'
         });
       });
   });
   it('finds all dogs with GET', async() => {
     const dogs = await Dog.create([
-      { name: 'Leo', age: 3, weight: '75 ib' },
-      { name: 'Tiny', age: 12, weight: '30 ib' },
-      { name: 'Elvis', age: 10, weight: '55 ib' }
+      { name: 'Leo', age: 3, weight: '75 ibs' },
+      { name: 'Tiny', age: 12, weight: '30 ibs' },
+      { name: 'Elvis', age: 10, weight: '55 ibs' }
     ]);
 
     return request(app)
@@ -57,10 +57,10 @@ describe('testing curd routes', () => {
     const dog = await Dog.create({
       name: 'Leo',
       age: 3,
-      weight: '75'
+      weight: '75 ibs'
     });
     return request(app)
-      .get(`/dog/${dog._id}`)
+      .get(`/dogs/${dog._id}`)
       .then(res => {
         expect(res.body).toEqual({ 
           _id: expect.toString(),
@@ -71,4 +71,45 @@ describe('testing curd routes', () => {
         });
       });
   });
+  it('updates some Dog object with Put', async() => {
+    const dog = await Dog.create({
+      name: 'Leo',
+      age: 3,
+      weight: '75 ibs'
+    });
+
+    return request(app)
+      .put(`/dogs/${dog._id}`)
+      .send({ name: 'Spot' })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: dog._id.toString(),
+          name: 'Spot',
+          age: 3,
+          weight: '75 ibs',
+          __v: dog.__v
+        });
+      });
+  });
+
+  it('can delete a Note with DELETE', async() => {
+    const dog = await Dog.create({
+      name: 'Leo',
+      age: 3,
+      weight: '75 ibs'
+    });
+
+    return request(app)
+      .delete(`/dogs/${dog._id}`)
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: dog._id.toString(),
+          name: 'Leo',
+          age: 3,
+          weight: '75 ibs',
+          __v: dog.__v
+        });
+      });
+  });
 });
+

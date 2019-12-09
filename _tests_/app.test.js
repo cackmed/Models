@@ -28,7 +28,8 @@ describe('testing curd routes', () => {
           _id: expect.any(String),
           name: 'Leo',
           age: 3,
-          weight: '75 ibs'
+          weight: '75 ibs',
+          __v: 0
         });
       });
   });
@@ -67,7 +68,7 @@ describe('testing curd routes', () => {
           name: dog.name,
           age: dog.age,
           weight: dog.weight,
-          __v: 0,
+          __v: dog.__v,
         });
       });
   });
